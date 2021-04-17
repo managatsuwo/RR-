@@ -2,7 +2,9 @@
 <p><%= @msg %></p>
 
     <%= form_tag(controller: "hello", action: "index") do %>
-     <%= check_box_tag("check1") %>
+     <%= select_tag('s1',
+      options_for_select(["Windows", "macOS", "Linux"]),
+      {size:4, multiple: true, class:"form-control"}) %>
      <%= label_tag("check1","check box") %>
      <%= submit_tag("Click") %>
     <% end %>
