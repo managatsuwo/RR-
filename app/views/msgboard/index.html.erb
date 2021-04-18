@@ -1,0 +1,36 @@
+  <%= form_tag(controller: "msgboard", action: "index") do %>
+
+    <div class="form-group">
+      <label for="name">名前</label>
+      <%= text_field_tag("name","",{class:"form-controller"}) %>
+    </div>
+
+    <div class="form-group">
+      <label for="name">メール</label>
+      <%= text_field_tag("mail","",{class:"form-controller"}) %>
+    </div>
+
+    <div class="form-group">
+      <label for="name">メッセージ</label>
+      <%= text_area_tag("msg","",{class:"form-controller"}) %>
+    </div>
+
+    <%= submit_tag("Click", {class:"btn btn-primary"}) %>
+  <% end %>
+
+  <table class="table mt-4">
+    <tr>
+      <th style="width:50%">メッセージ</th>
+      <th>名前</th>
+      <th>メール</th>
+      <th>投稿日時</th>
+    </tr>
+    <% @msg_date.each do |key,obj| %>
+      <tr>
+        <tb class="msg"><%= obj['msg'] %></tb>
+        <tb class="name"><%= obj['name'] %></tb>
+        <tb class="mail"><%= obj['mail'] %></tb>
+        <tb class="time"><%= Time.at (key.to_i) %></tb>
+      </tr>
+    <% end %>
+  </table>
